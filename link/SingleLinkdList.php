@@ -249,3 +249,5 @@ $list->printListSimple();
 // 反序
 $list->reverse();
 $list->printListSimple();
+
+var_dump($list->checkCircle());
