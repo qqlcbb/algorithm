@@ -62,6 +62,37 @@ class SingleLinkedList
     }
 
     /**
+     * 输出单链表
+     * @return [type] [description]
+     */
+    public function printListSimple()
+    {
+        if ($this->head == null || $this->head->next == null) {
+            return false;
+        }
+
+        $curNode = $this->head;
+        while ($curNode->next != false) {
+            echo $curNode->next->data . '->';
+            $curNode = $curNode->next;
+        }
+
+        echo 'NULL' . PHP_EOL;
+
+        return true;
+    }
+
+    /**
+     * 插入链表，使用头插法
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function insert($data)
+    {
+        return $this->insertDataAfter($this->head, $data);
+    }
+
+    /**
      * 在某个节点后面插入新的节点（直接插入数据）
      * @param  SingleLinkedListNode $originNode [description]
      * @param  [type]               $data       [description]
@@ -109,4 +140,112 @@ class SingleLinkedList
 
         return true;
     }
+
+    /**
+     * 根据索引获取节点
+     * @param  [type] $index [description]
+     * @return [type]        [description]
+     */
+    public function getNodeByIndex($index)
+    {
+        if ($index >= $this->length) {
+            return false;
+        }
+
+        $curNode = $this->head->next;
+        for ($i = 0; $i < $index; $i++) {
+            $curNode = $curNode->next;
+        }
+
+        return $curNode;
+    }
+
+    /**
+     * 反转链表
+     * @return [type] [description]
+     */
+    public function reverse()
+    {
+        // 前一个一个节点
+        $preNode = null;
+        // 当前节点
+        $curNode = $this->head->next;
+
+        while ($curNode != null) {
+
+            $tmp = $curNode->next;
+            $curNode->next = $preNode;
+
+            $preNode = $curNode;
+            $curNode = $tmp;                
+        }
+        
+        // 头指针指向反向的列表
+        $this->head->next = $curNode;
+
+        return true;
+    }
+
+    /**
+     * 删除倒数第n个节点
+     * @param  [type] $index [description]
+     * @return [type]        [description]
+     */
+    public function deleteLastKth($index)
+    {
+        // 先倒将链表倒数
+        $this->reverse();
+        $node = $this->head;
+        $preNode = $this->head;
+        for ($i = 0; $i < $index; $i ++) {
+            $preNode = $node;
+            $node = $node->next;
+        }
+
+        $preNode->next = $node->next;
+        $this->length --;
+        unset($node);
+
+        $this->reverse();
+
+        return true;
+    }
+
+    /**
+     * 判断链表是否有环
+     * @return [type] [description]
+     */
+    public function checkCircle()
+    {
+        if ($this->head == null || $this->head->next) {
+            return false;
+        }
+        
+        $fast = $this->head->next;
+        $slow = $this->head->next;
+
+        while ($fast != null && $fast->next != null) {
+            $fast = $fast->next->next;
+            $slow = $slow->next;
+            if ($slow === $fast) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
+
+
+$list = new SingleLinkedList();
+$list->insert(1);
+$list->insert(2);
+$list->insert(3);
+$list->insert(4);
+$list->insert(5);
+$list->insert(6);
+$list->insert(7);
+$list->printListSimple();
+
+// 反序
+$list->reverse();
+$list->printListSimple();
