@@ -1,32 +1,6 @@
 <?php
 
-/**
- * @title 单链表节点
- */
-class SingleLinkedListNode 
-{
-    /**
-     * 节点中的数据域
-     * @var null
-     */
-    public $data;
-
-    /**
-     * 节点中的指针域名，指向下一个节点
-     * @var [type]
-     */
-    public $next;
-
-    /**
-     * [__construct description]
-     * @param [type] $data [description]
-     */
-    public function __construct($data = null)
-    {
-        $this->data = $data;
-        $this->next = null;
-    }
-}
+namespace link;
 
 /**
  * @title 单链表
@@ -234,20 +208,3 @@ class SingleLinkedList
         return false;
     }
 }
-
-
-$list = new SingleLinkedList();
-$list->insert(1);
-$list->insert(2);
-$list->insert(3);
-$list->insert(4);
-$list->insert(5);
-$list->insert(6);
-$list->insert(7);
-$list->printListSimple();
-
-// 反序
-$list->reverse();
-$list->printListSimple();
-
-var_dump($list->checkCircle());
