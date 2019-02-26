@@ -11,7 +11,8 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "link\\": "link/"
+            "link\\": "link/",
+            "stack\\": "stack/"
         }
     }    
 }
