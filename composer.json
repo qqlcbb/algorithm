@@ -12,7 +12,8 @@
     "autoload": {
         "psr-4": {
             "link\\": "link/",
-            "stack\\": "stack/"
+            "stack\\": "stack/",
+            "queue\\": "queue/"
         }
     }    
 }
