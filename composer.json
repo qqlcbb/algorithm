@@ -13,7 +13,8 @@
         "psr-4": {
             "link\\": "link/",
             "stack\\": "stack/",
-            "queue\\": "queue/"
+            "queue\\": "queue/",
+            "sort\\": "sort/"
         }
     }    
 }
