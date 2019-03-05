@@ -10,8 +10,8 @@ $sortFunc = new SortFunc();
 $arr1 = $sortFunc->bubble($arr);
 print_r($arr1);
 
-$arr2 = $sortFunc->bubble($arr);
+$arr2 = $sortFunc->insertion($arr);
 print_r($arr2);
 
-$arr3 = $sortFunc->bubble($arr);
+$arr3 = $sortFunc->selection($arr);
 print_r($arr3);
