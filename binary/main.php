@@ -91,9 +91,107 @@ function squareRoot($number)
     return $mid;
 }
 
-$arr = [1,3,5,7,9];
-var_dump(bsearch($arr, 3));
+/**
+ * 查找第一个值等于某个值的元素
+ * @param  [type] $arr   [description]
+ * @param  [type] $value [description]
+ * @return [type]      [description]
+ */
+function bsearch1($arr, $value)
+{
+    $count = count($arr);
+    $start = 0;
+    $end = $count - 1;
 
-var_dump(search($arr, 0, count($arr) - 1, 3));
+    while ($start <= $end) {
+        $mid = $start + $end - $start;
+        if ($arr[$mid] > $value) {
+            $end = $mid - 1;
+        } elseif ($arr[$mid] < $value) {
+            $start = $mid + 1;
+        } else {
+            if ($mid == 0 || $arr[$mid - 1] != $value) return $mid;
+            else $end = $mid - 1;
+        }
+    }
+    return -1;
+}
 
-var_dump(squareRoot(3));
+/**
+ * 查找最后一个值等于某个值的元素
+ * @param  [type] $arr   [description]
+ * @param  [type] $value [description]
+ * @return [type]        [description]
+ */
+function bsearch2($arr, $value)
+{
+    $count = count($arr);
+    $start = 0;
+    $end = $count - 1;
+
+    while ($start <= $end) {
+        $mid = $start + $end - $start;
+        if ($arr[$mid] > $value) {
+            $end = $mid - 1;
+        } elseif ($arr[$mid] < $value) {
+            $start = $mid + 1;
+        } else {
+            if ($mid == 0 || $arr[$mid + 1] != $value) return $mid;
+            else $start = $mid + 1;
+        }
+    }
+
+    return -1;
+}
+
+/**
+ * 查找第一个大于等于给定值的元素
+ * @param  [type] $arr   [description]
+ * @param  [type] $value [description]
+ * @return [type]        [description]
+ */
+function bsearch3($arr, $value)
+{
+    $count = count($arr);
+    $start = 0;
+    $end = $count - 1;
+
+    while ($start <= $end) {
+        $mid = $start + $end - $start;
+        if ($arr[$mid] >= $value) {
+            if ($mid == 0 || $arr[$mid - 1] < $value) return $mid;
+            else $end = $mid - 1;
+        } else {
+            $start = $mid + 1;
+        }
+    }
+    return -1;    
+}
+
+/**
+ * 查找最后一个小于等于给定值的元素
+ * @param  [type] $arr   [description]
+ * @param  [type] $value [description]
+ * @return [type]        [description]
+ */
+function bsearch4($arr, $value)
+{
+    $count = count($arr);
+    $start = 0;
+    $end = $count - 1;
+
+    while ($start <= $end) {
+        $mid = $start + $end - $start;
+        if ($arr[$mid] <= $value) {
+            if ($mid == 0 || $arr[$mid + 1] > $value) return $mid;
+            else $start = $mid + 1;
+        } else {
+            $end = $mid - 1;
+        }
+    }
+
+    return - 1;
+}
+
+$arr = [1, 2, 3, 5, 5, 7, 8];
+var_dump(bsearch4($arr, 5));
