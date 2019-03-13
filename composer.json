@@ -14,7 +14,8 @@
             "link\\": "link/",
             "stack\\": "stack/",
             "queue\\": "queue/",
-            "sort\\": "sort/"
+            "sort\\": "sort/",
+            "tree\\": "tree/"
         }
     }    
 }
